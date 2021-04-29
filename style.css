@@ -1,0 +1,141 @@
+/*
+Ενδεικτικοί επιλογείς για τη διαμόρφωση του στυλ
+
+Μπορείτε να προσθέσετε τις δηλώσεις στους παρακάτω κανόνες και να εμπλουτίσετε με δικούς σας κανόνες.
+*/
+
+
+/* Χρειάζεται για να φανούν οι σημαίες στους φυλλομετρητές chrome-based από Windows 10 */
+
+@font-face {
+    font-family: 'TwemojiMozilla';
+    src: url('TwemojiMozilla.ttf');
+}
+
+body {
+    margin: 40px;
+    font-family: 'Open Sans', 'TwemojiMozilla';
+    /* Η γραμματοσειρά open sans φορτώνεται στο αρχείο html*/
+    background-color: #fff;
+    color: #444;
+}
+
+.game-panel {
+    display: grid;
+    grid-template-columns: 20% 80%;
+    grid-template-rows: 6em 2em auto;
+    grid-template-areas:
+	'sidebar my-country '
+	'sidebar progress '
+	'sidebar neighbours-panel';
+    height:100%;
+    grid-gap: 10px;
+
+}
+
+@media (max-width: 800px) {
+    /* ενδεικτικά */
+    /*  ... */
+}
+
+#my-country {
+    grid-template-columns: 60px 80%;
+    grid-gap: 10px;
+    grid-template-areas:
+	'flag name';
+    display: grid;
+    padding:20px;
+    border-radius: 5px;
+    background-color: grey;
+    height:5em;
+    justify-content: center;
+    grid-area:my-country;
+}
+
+#sidebar {
+    position: relative;
+    border-radius: 5px;
+    text-align: center;
+    grid-area:sidebar;
+    height:100%;
+    background-color:rgb(240, 147, 163);
+}
+
+#score {}
+
+#neighbours-panel {
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-auto-flow: row;
+    grid-area:neighbours-panel;
+    display: grid;
+    position:relative;
+}
+
+.neighbour {
+    
+}
+
+.was-clicked.neighbour-is-valid {
+    border-style:solid;
+    border-color: green;
+}
+
+.was-clicked.neighbour-is-invalid {
+    border-style:solid;
+    border-color: red;
+}
+
+.neighbour:not(.was-clicked) {}
+
+#my-country-flag {
+    font-size: 60px;
+    grid-area:flag;
+}
+
+#my-country-name {
+    margin: auto 0;
+    grid-area:name;
+}
+
+#next-round-panel {
+    text-align:center;
+    font-size: 40px;
+    color:white;
+    position: absolute; 
+    display: none; 
+    width: 100%; 
+    height: 100%; 
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5); 
+    z-index: 2; 
+    cursor: pointer; 
+}
+
+#progress {}
+
+h2,h3 {color:aliceblue;}
+
+#button-group{
+    position: absolute;
+    bottom: 10px;
+    display: block;
+    width: 100%;
+}
+button{
+    width:50%;
+    margin:auto;
+    height:35px;
+}
+/* ειδικά για τους φυλλομετρητές που προέρχονται από τον chrome καθώς 
+υποστηρίζουν λιγότερο καλά το στοιχείο progress από ότι ο firefox,
+όσον αφορά το CSS (που και σε αυτόν έχει προβληματική υποστήριξη)
+*/
+
+#progress::-webkit-progress-bar {
+    grid-area:progress;
+    border-radius: 5px;
+    background-color: orange;
+}
